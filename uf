@@ -1,0 +1,21 @@
+Option Explicit
+Private WithEvents theCal As cl_cal
+Private WithEvents theCalm As cl_cal
+Private Sub cmdDoIt_Click()
+    Dim l As Long
+    l = theCal.FirstDay + 1
+    theCal.FirstDay = l
+    Me.Label9.Caption = theCal.FirstDay
+End Sub
+Private Sub theCal_AfterUpdate()
+    Me.Label22.Caption = theCal.Value
+End Sub
+Private Sub UserForm_Initialize()
+    Dim nf As MSForms.NewFont
+    Set theCal = New cl_cal
+    theCal.Add_Calendar_into_Frame Me.Frame1
+End Sub
+Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
+    Set theCal = Nothing
+    Set theCalm = Nothing
+End Sub
